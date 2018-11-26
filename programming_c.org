@@ -1,0 +1,1680 @@
+* primer
+In linux run with gcc
+gcc accepts both C and C++
+
+Dont sweat it, use Yasnippets in Emacs
+
+* taking user input with scanf()
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+  char name[20];
+  char color[20];
+
+  printf("what is your name");
+  scanf("%s", name);
+  printf("what is your favourite color");
+  scanf("%s", color);
+  printf("%s favourite color is %s", name, color);
+  return 0;
+}
+
+
+#+END_SRC
+* setting char / string variable
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+  char menuitem[]="slimy orange stuff \"icky woka gu\"";
+
+  int pints=1;
+  float price = 1.34;
+
+  printf("Todays special is %s .\n", menuitem);
+  printf("The price of %s is %d*%d", menuitem, pints, price);
+  // see this does not work , seems like you cannot
+  // do %d*%d when one of them is int and other is float
+
+  // for float you use %f
+  // can you do %f*%d
+  // maybe there is a conversion tool just like
+  // atoi
+
+  
+  return 0;
+}
+
+
+#+END_SRC
+* taking user input with gets()
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+  char jerk[20];
+  printf("what is your name");
+  gets(jerk);
+  printf("yeah, i think %s is a jerk", jerk);
+  return(0);
+}
+
+
+// this works all right, but there is a fuckton of warning
+
+
+#+END_SRC
+* stdout with puts
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+  char jerk[20];
+
+  puts("name some jerk you know: ");
+  gets(jerk);
+  
+  /* puts("yeah, i think %s is a jerk, too. ", jerk); */
+  // this gives an error
+  puts("yeah, i think");
+  puts(jerk);
+  puts("is a jerk too");
+  
+  return 0;
+}
+
+
+#+END_SRC
+* setting char / string variable ; getting user input with gets()
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+  char kitty[20];
+
+  printf("what would you like to name you kitty? \n");
+  gets(kitty); // gets is used in place of scanf
+  // user input is stored in kitty
+  printf("%s is a nice name. what elese do you have in mind \n", kitty);
+  gets(kitty);
+  printf("%s is a nice too. \n", kitty);
+
+}
+
+
+#+END_SRC
+* setting int type variable
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+  int age;
+  age = 969;
+  printf("the age of methuselah was %d years old. \n", age);
+  return 0;
+}
+
+
+#+END_SRC
+* getting user input with gets() ; using atoi()
+#+BEGIN_SRC C
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+  int age;
+  char years[8];
+
+  printf("how old was methuselah? :\n");
+  gets(years);
+  age=atoi(years);
+  printf("methuselah was %d years of age\n", age);
+  
+  return 0;
+}
+
+
+
+
+/* int main(){ */
+/*   int age; */
+/*   char years[8]; */
+
+/*   printf("how old was methuselah? :\n"); */
+/*   gets(years); */
+/*   //   age=atoi(years); */
+/*   printf("methuselah was %d years of age\n", years); */
+  
+/*   return 0; */
+/* } */
+//this will get you into troble
+
+
+#+END_SRC
+* you are n years younger than mr x
+#+BEGIN_SRC C
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+  char myage[20];
+  int myage1;
+  int mathus_age;
+  int diff;
+  printf(" what is your age?");
+    gets(myage);
+    myage1=atoi(myage);
+  mathus_age=969;
+  diff=mathus_age - myage1;
+  printf(" you are %d years younger than mathus", diff);
+
+
+    return 0;
+}
+
+
+#+END_SRC
+* setting char type or string type variables // getting errors??
+#+BEGIN_SRC C
+
+#include <stdio.h>
+//char myvariable[30];
+int main(){
+
+  // declare a variable
+  /* char myvariable='w'; */
+  /* //    char myvariable='what is this'; this throws error saying character constant is too long */
+  /* // which is what should be expected but then why was the reason for the previous cases where it was not throwing any error. */
+
+  //  string myvariable='this is a long string'; // throws errors saying too long for a string type
+
+  char myvariable[50];
+  
+   myvariable = 'this_is_a_long_string'; // here also errors
+  // how do you declare string variables in c
+  
+    printf("\n\n\n%s\n\n\n",&myvariable);
+    return 0;
+}
+
+
+/* so where is what is happening here */
+/* char is being used for both char as well as string */
+/* could not get anything about how do you go about declaring strings */
+
+/* then i came across */
+
+/* this */
+
+
+/* 				      char mystring[20]; */
+/* mystring="this_is_my_string"; */
+
+/* here char[20], says that the length of the string would contain 20 chars */
+  
+
+
+#+END_SRC
+* print a lot
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+  // in case of java you were doing
+  // int myFunction(){}; which meant that the return type was int or integer, this only prints stuff
+  // and at the end of the printing business, it does returns an int
+  // return 0; or return(0); maybe they are the same
+  // we are returning an int.
+
+  printf(" braces comes in pairs !\n");
+  printf(" comments comes in pairs! \n");
+  printf(" all statements end with a semicolon just like in java\n");
+  printf(" spaces are optional \n");
+  printf(" there has to be a main function \n");
+  printf(" c is done mostly in lowercase \
+ it is a case sensitive language \n");
+  printf(" hello there\n");
+  printf(" good bye now\n");
+  return 0;
+}
+
+
+#+END_SRC
+* taking user input with scanf() // formatting placeholders in user input
+#+BEGIN_SRC C
+
+#include <stdio.h>
+int main(){
+/* calculation of simple interest */
+
+int p, n;
+float r, si;
+
+printf("please enter the values of\n principle\n number of years \n rate \n \n");
+
+//scanf("%d %d %f", p,n,r);
+scanf("%d %d %f", &p,&n,&r);
+// what is the use of the ampersand
+/* formula for simple interest */
+
+si=p*n*r/100;
+
+printf("the simple interest for %d for a period of %d is %f \n\n", p,n,si);
+
+ return 0;
+}
+
+
+#+END_SRC
+* simple math with int and float
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+  int p,n;
+  float si,r;
+
+  p=1000;
+  n=3;
+  r=8.5;
+
+  /* formula for simple interest */
+  si= p*n*r/100;
+
+  printf("\n\n\n%f is the simple interest\n\n\n", si);
+}
+
+		       
+
+
+#+END_SRC
+* user input with scanf()
+#+BEGIN_SRC C
+
+#include <stdio.h>
+int main(){
+
+  char me[20];
+  // char me[20] ; this is the variable declaration
+  // me is a variable , the type seems to be char, what is char, it is not a single character, it is a string seems like
+  //[20], what is this. is this a memory allocation or what.
+  //[20], looks like when you are building an array.
+  
+  printf("what is your name?\n");
+  scanf("%s", &me);
+  printf("glad to meet you %s!\n\n\n", me);
+  return 0;
+}
+
+
+#+END_SRC
+* different / dirty way of putting statement blocks
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+main(){
+
+  int i;
+  scanf("%d", &i);
+
+  (i==1 ? printf("amit"): printf("alrighty then"));
+
+}
+
+
+
+
+/* (i==1 ?printf("amit"): printf("alrighty then")); // this too works */
+
+
+
+
+/* (i==1? printf("amit"): printf("alrighty then")); // this works */
+
+
+
+/* (i==1  printf("amit"): printf("alrighty then")); // this gives error */
+
+
+#+END_SRC
+* comparing int and char, what what
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+main(){
+
+  int i=65;
+  char j='A';
+
+  // try with varying the value of i
+  
+  if (i==j){
+
+    printf("c is wow\n");
+  }else{
+    printf("c is a headache\n");
+
+  }
+  
+  
+}
+// comparing int and char
+
+
+#+END_SRC
+* placeholders and variables in printf()
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+main(){
+
+  int a=5, b,c;
+  b=a=15;
+  c=a<15; // this looks dubious and you are right
+
+  printf("\na=%d b=%d c=%d", a,b,c);
+  
+  
+}
+// comparing int and char
+
+
+#+END_SRC
+* a simple while loop
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+main(){
+
+  int i=10;
+
+  while(i>=1){
+    printf("say my name %d\n",i);
+
+  i=i-1;
+  }
+  
+}
+// comparing int and char
+
+
+#+END_SRC
+* while loop
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+main(){
+
+  float i=10.0;
+
+  while(i>=1){
+    printf("say my name %f\n",i);
+
+  i=i-0.01;
+  }
+  
+}
+// comparing int and char
+
+
+#+END_SRC
+* ask user for height in inches; convert it to cm
+#+BEGIN_SRC C
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+  // basically what this would do is to prompt the user to input their height in inches and then to convert it to centimeters and print it out.
+
+  float height_in_cm;
+
+  // when we prompt for user_input, we take it in as char
+  // idk why , why cannot we take user input as int or something like that.
+
+  char height_in_inches[4];
+
+  printf("enter your height in inches: \n");
+  gets(height_in_inches); // i do not have to put in placeholders , this is somehting you need to look back into.
+
+  height_in_cm = atoi(height_in_inches)*2.54;
+
+  printf("you are %.2f centimeters tall. \n", height_in_cm);
+
+  
+
+
+}
+
+
+// so what is the point of my interest in this program anyway. the thing is that the user input is being in the type of char and then char is being converted to the type int with the function atoi()
+
+// atoi() // user input in char as opposed to int
+
+
+
+
+#+END_SRC
+* mathematics
+#+BEGIN_SRC C
+
+// page 161 of c for dummies.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+
+  int houses, hotels, total; // these are the variables to store values in.
+  char temp[4]; // this will be for the user input
+
+  printf("enter the number of houses: \n");
+  gets(temp);
+  houses=atoi(temp);
+
+  printf("enter the numbere of hotels: \n");
+  gets(temp);
+  hotels=atoi(temp);
+
+  total=houses*40+hotels*115; // whimsical numbers
+
+  printf("you owe the bank $%d. \n", total);
+  return 0;
+
+}
+
+
+
+#+END_SRC
+* placeholders and constant in printf()
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+  printf("\n\n%s\n\n","hello there");
+  // that is a constant, it is not going to change
+  
+  return 0;
+}
+
+
+
+/* printf("%s", variable); */
+
+/* printf("%s", "a constant string") */
+
+
+#+END_SRC
+* printf(); placeholders 
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+  printf("the blah blah bblah %i\n",44);
+  printf("the weired blah blaqh %i\n blah blaqh glhadhl ", 56+23);
+  return 0;
+}
+  
+
+
+#+END_SRC
+* printf(); placeholders
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+
+  printf("\n\n%d\n\n%d\n\n%s\n\n%s\n", 3, 34+56, "c", "a*b");
+  return 0;
+}
+
+
+#+END_SRC
+* mathematics
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main(){
+
+  int a,b,c,d,e;
+  a=1;
+  b=3;
+  c=54;
+  d=6897;
+
+  e=a+b*(c+d);
+  printf("value of calculation is %d \n", e);
+  return 0;
+}
+
+
+#+END_SRC
+* nested if else statement
+
+#+BEGIN_SRC C
+
+/* a quick demo of nested if else statement */
+#include <stdio.h>
+main(){
+
+  int i;
+  printf("enter either 1 or 2\n");
+  scanf("%d",&i);
+
+  if (i==1)
+    printf("you entered 1\n");
+  else{
+    if (i==2)
+      printf("you entered 2\n");
+    else
+      printf("you have defied my orders\n");
+
+  }
+}
+
+
+#+END_SRC
+* nested if else
+#+BEGIN_SRC C
+
+/* a quick demo of nested if else statement */
+#include <stdio.h>
+main(){
+
+  int i;
+  printf("enter either 1 or 2\n");
+  scanf("%d",&i);
+
+  if (i==1){
+    printf("you entered 1\n");
+  }
+  else{
+    if (i==2){
+      printf("you entered 2\n");
+    }
+    else{
+      printf("you have defied my orders\n");
+    }
+
+  }
+}
+
+
+#+END_SRC
+* if else statement
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+/* percentages =>60: first division */
+/* 59 <= percentages =>50  : second division */
+/* 49 <= percentages => 49: third division */
+/* 40<= percentages : forth division */
+  
+
+main(){
+
+
+  int m1, m2, m3, m4, m5, per;
+
+  printf("enter marks in five subjects\n");
+  scanf("%d %d %d %d %d", &m1, &m2, &m3, &m4, &m5);
+
+  per=(m1+m2+m3+m4+m5)/5;
+
+  if(per >= 60){
+    printf("first division\n");
+  }else{
+    if (per >=50){
+      printf("second division\n");
+    }else{
+
+      if(per>=40){
+	printf("third division\n");
+      }
+      else{
+	printf("fail\n");
+      }
+      
+    }
+
+
+
+  }
+}
+
+
+#+END_SRC
+* if else statement with && operator
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+/* percentages =>60: first division */
+/* 59 <= percentages =>50  : second division */
+/* 49 <= percentages => 49: third division */
+/* 40<= percentages : forth division */
+  
+
+main(){
+
+
+  int m1, m2, m3, m4, m5, per;
+
+  printf("enter marks in five subjects\n");
+  scanf("%d %d %d %d %d", &m1, &m2, &m3, &m4, &m5);
+
+  per=(m1+m2+m3+m4+m5)/5;
+
+
+  if (per>60){
+    printf("first\n");
+    }
+
+
+  if ((per>=50) && (per <=49)){
+    printf("second\n");
+  }
+
+
+  if ((per>=40) && (per <= 49)){
+    printf("third\n");
+  }
+
+  if (per <40){
+    printf("fail or try again \n");
+  }
+
+  
+}
+
+
+// the conditions we call as
+// more or equal to
+// less or equal to
+// more or equal to  : >=
+// less or equal to : <=
+
+// you cannot have
+// equal to or more than : => // this is wrong
+// you cannot have
+// equal to or less than : =< // this is also wrong
+
+
+
+
+#+END_SRC
+* if else
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+/* percentages =>60: first division */
+/* 59 <= percentages =>50  : second division */
+/* 49 <= percentages => 49: third division */
+/* 40<= percentages : forth division */
+  
+
+main(){
+
+
+  int m1, m2, m3, m4, m5, per;
+
+  printf("enter marks in five subjects\n");
+  scanf("%d %d %d %d %d", &m1, &m2, &m3, &m4, &m5);
+
+  per=(m1+m2+m3+m4+m5)/5;
+
+
+  if (per>60){
+    printf("first\n");
+  }else if(per>=59){
+    printf ("second\n");
+  }else if (per >= 49){
+    printf("third\n");
+  }else {
+      printf ("fail or try again\n");
+
+  }
+  
+}
+
+
+// the conditions we call as
+// more or equal to
+// less or equal to
+// more or equal to  : >=
+// less or equal to : <=
+
+// you cannot have
+// equal to or more than : => // this is wrong
+// you cannot have
+// equal to or less than : =< // this is also wrong
+
+
+
+
+#+END_SRC
+* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+/* 1 */
+
+
+#+BEGIN_SRC C
+/* let us declare an array */
+#include <stdio.h>
+
+int main( )
+{
+
+  int  a[10];
+ int i;
+
+  /* put in some values */
+/* use scanf to read in some values */
+
+  for (i = 0; i < 10; i++) {
+    scanf("%d", &a[i] );
+  }
+
+  /* now to print out the array */
+
+  for (i = 0; i < 10; i++) {
+    printf(" %d", a[i]);
+  }
+
+  
+  
+  return 0;
+}
+
+
+#+END_SRC
+
+
+/* 2 */
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+#define N 10
+
+int main( )
+{
+  int a[N];
+  int i;
+
+ /* let us read in some values into our array */
+  /* using scanf */
+
+  for (i = 0; i < N; i++) {
+    scanf("%d", &a[i]);
+  }
+ /* now let us print out the array */
+  for (i = 0; i < N; i++) {
+    printf(" %d" ,a[i]);
+  }
+
+  return 0;
+}
+
+
+#+END_SRC
+/* 3 */
+
+#+BEGIN_SRC C
+
+
+#include <stdio.h>
+#define N 10
+int main( )
+{
+  int a[N];
+  int i;
+  /*let us create an array */
+
+  for (i = 0; i < N; i++) {
+    scanf("", &a[i]);
+  }
+
+  /* let us print the array we have created */
+  //  puts(" let us print the array we have created ");
+  
+  for (i = 0; i < N; i++) {
+    printf(" %d" , a[i]);
+  }
+
+  /*now let us clear the array */
+  //  puts("clearing the array now");
+  for (i = 0; i < N; i++) {
+    a[i]=0;
+  }
+  /*now let us re create the array */
+  //  puts("recreating the array");
+  for (i = 0; i < N; i++) {
+    scanf("%d",&a[i]);
+  }
+  /*again print out the array */
+  //  puts("now let us again print out our new array");
+  for (i = 0; i < N; i++) {
+    printf(" %d" ,a[i]);
+  }
+
+
+  return 0;
+}
+
+
+#+END_SRC
+/* idk, why this does not work */
+
+/* 4 */
+#+BEGIN_SRC C
+
+#include <stdio.h>
+#define N 10
+
+int main( )
+{
+  puts("hello there");
+  puts("let us create an array");
+  int a[N];
+  int i,sum;
+
+  for (i = 0; i < N; i++) {
+    scanf("%d", &a[i]);
+  }
+for (i = 0; i < N; i++) {
+  printf(" %d" ,a[i]);
+ }
+ puts("let us do the summation of the array\n");
+  for (i = 0; i < N; i++) {
+    sum += a[i];
+  }
+
+  /* printf("%d", sum); */
+  /* getting weird answers in summation */
+  printf("%d\n", sum);
+  return 0;
+}
+
+
+#+END_SRC
+
+/* there is a serious bug in c, when i do the summation, it gives me a weird number ???? */
+
+/* 5 */
+
+#+BEGIN_SRC C
+
+
+#include <stdio.h>
+
+int main( )
+{
+  int a[10]={1,2,3,4,5,6,67,5,7};
+  int i;
+  for (i = 0; i < 10; i++) {
+    printf(" %d" ,a[i]);
+  }
+
+  return 0;
+}
+
+
+
+#+END_SRC
+/* 6 */
+#+BEGIN_SRC C
+
+
+#include <stdio.h>
+
+int main( )
+{
+  int a[10]={1,2};
+  int i;
+  for (i = 0; i < 10; i++) {
+    printf(" %d" ,a[i]);
+  }
+
+  return 0;
+}
+
+/* interesting */
+
+#include <stdio.h>
+
+int main( )
+{
+  int a[10]={0};
+  int i;
+  for (i = 0; i < 10; i++) {
+    printf(" %d" ,a[i]);
+  }
+
+  return 0;
+}
+
+
+#+END_SRC
+/* 7 */
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int main( )
+{
+  int a[10]={0};
+  int i;
+  for (i = 0; i < 10; i++) {
+    printf(" %d" ,a[i]);
+  }
+  puts("now let us again repopulate that array with our own values");
+  for (i = 0; i < 10; i++) {
+    scanf("%d", &a[i]);
+  }
+  for (i = 0; i < 10; i++) {
+    printf(" %d" ,a[i]);
+  }
+
+
+
+  return 0;
+}
+
+
+#+END_SRC
+/* 8 */
+#+BEGIN_SRC C
+
+#include <stdio.h>
+int main( )
+{
+  int a[]={3,3,5,3,6,4,3};
+  int i;
+  /* what is given in the braces are called the initializer of the array, if initializer is present */
+  /*then you do not have to give a length of the array */
+  for (i = 0; i < 7; i++) {
+    printf(" %d" ,a[i]);
+  }
+
+  return 0;
+}
+
+
+#+END_SRC
+/* 9 */
+
+#+BEGIN_SRC C
+#include <stdio.h>
+int main()
+{
+
+  int a[10]={[2]=12, [3] = 34, [6] = 56, [8] = 12, [1] = 34};
+  int i;
+  
+  /*look at this way of initializing the array */
+  /* the placeholders that we left out will take the default value of 0 */
+  puts("let us now print out the array\n");
+
+  for (i = 0; i < 10; i++) {
+    printf(" %d" ,a[i]);
+  }
+
+  return 0;
+}
+
+
+#+END_SRC
+/* 10 */
+#+BEGIN_SRC C
+
+
+/* reverse some numbers */
+
+#include <stdio.h>
+#define N 10
+int main( )
+{
+int a[N];
+int i;
+
+for (i = 0; i < N; i++) {
+scanf("%d", &a[i]);
+}
+puts("now to print out the array you put in\n");
+for (i = 0; i < N; i++) {
+printf(" %d" ,a[i]);
+}
+
+puts("now we are going to reverse it\n");
+for (i = N+1; i >= 0; i--) {
+printf(" %d" ,a[i]);
+
+}
+
+return 0;
+}
+/* everything works fine but then i also get two weird numbers */
+
+
+#+END_SRC
+
+/* 11 */
+
+#+BEGIN_SRC C
+
+
+/* read in a word, and then you reverse it */
+#include <stdio.h>
+#define N 5
+int main( )
+{
+
+  int a[N];
+  int b[N];
+  int i;
+  
+  puts("please enter a word, 5 letters or less");
+  for (i = 0; i < N; i++) {
+    scanf("%d", &a[i]);
+    
+  }
+  puts("you entered the following word\n");
+  for (i = 0; i < N; i++) {
+    printf(" %d" ,a[i]);
+  }
+  puts("now we are going to reverse the word\n");
+  for (i = N; i <=0; i--) {
+    b[i]=a[i];
+    
+  }
+  printf(" your reversed word is \n ");
+
+  for (i = 0; i < N; i++) {
+    printf(" %d" ,b[i]);
+  }
+
+
+  return 0;
+}
+
+
+#+END_SRC
+/* what is with the weird numbers */
+/* how do you get in some string instead of numbers */
+
+/* 12 */
+#+BEGIN_SRC C
+
+/* copy one array into anothe array */
+
+/* using simple loop */
+
+for (i = 0; i < N; i++) {
+  a[i]=b[i];
+ }
+
+
+#+END_SRC
+
+#+BEGIN_SRC C
+/* or use memcpy function */
+
+#include <string.h>
+memcpy(a, b, sizeof(a));
+
+/* memcpy takes in three parameters, the array from which you are copying, the array to which you are copying to 
+   and the size of the original array */
+
+
+
+#+END_SRC
+
+/* 13 */
+#+BEGIN_SRC C
+
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define N 10
+
+int main( )
+{
+  int a[N];
+  int b[N];
+  int i;
+  puts("let us populate the array a\n");
+  for (i = 0; i < N; i++) {
+    scanf("%d", &a[i]);
+    
+  }
+  puts("the contents of array a are \n");
+  for (i = 0; i < N; i++) {
+    printf(" %d" ,a[i]);
+  }
+  puts("let us now copy array a to array b\n");
+  memcpy(a,b, sizeof(a));
+  puts("the contents of array b are \n");
+  for (i = 0; i < N; i++) {
+    printf("%d" ,b[i]);
+  }
+
+
+
+  return 0;
+}
+
+
+#+END_SRC
+
+/* i am getting a weird number */
+
+
+/* 14 */
+
+/* there must be a way to print out the size of an array */
+#+BEGIN_SRC C
+
+#include <stdio.h>
+#include <string.h>
+
+int main( )
+{
+  int a[]={2,4,6,2,6};
+  int i;
+  puts("the elements of the array are \n");
+  for (i = 0; i < sizeof(a); i++) {
+    printf(" %d" ,a[i]);
+  }
+  puts("the size of the array itself is \n");
+  printf(" %d" ,sizeof(a));
+
+  return 0;
+}
+
+/* why is the size of the array 20 */
+
+/* what are those weird numbers i am getting */
+
+
+
+#+END_SRC
+/* 15 */
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+#include <string.h>
+
+int main( )
+{
+  /* here i will declare the array */
+  
+  int a[10];
+  int i;
+  /* now i will initialize the array */
+
+  for (i = 0; i < 10; i++) {
+    scanf("%d", &a[i]);
+  }
+
+
+  
+
+  puts("the elements of the array are \n");
+  for (i = 0; i < sizeof(a); i++) {
+    printf(" %d" ,a[i]);
+  }
+  puts("the size of the array itself is \n");
+  printf(" %d" ,sizeof(a));
+
+  return 0;
+}
+
+/* i still get weird numbers and now the size of the array is mysteriously 40 */
+
+
+#+END_SRC
+
+/* 16 */
+#+BEGIN_SRC C
+
+/* ask user for input and see if there are repeated characters */
+
+#include <stdio.h>
+int main( )
+{
+  int a;
+  
+  puts(" input some number");
+  scanf(" %d",  &a);
+  printf("you entered the number %d" ,a);
+  return 0;
+}
+
+
+#+END_SRC
+
+/* this works */
+
+
+/* 17 */
+
+#+BEGIN_SRC C
+
+
+#include <stdio.h>
+int main( )
+{
+  char a;
+  
+  puts(" input some letters");
+  scanf(" %s",  &a);
+  printf("you entered the letters %s" ,a);
+  return 0;
+}
+/* segmentation fault ?????? */
+
+/* how do you get user input for a string or char */
+
+
+#+END_SRC
+/* 18 */
+#+BEGIN_SRC C
+#include <stdio.h>
+#define N 10
+int main( )
+{
+  int a[N];
+  int i, key, lock;
+  puts(" enter some numbers");
+  for (i = 0; i < N; i++) {
+    scanf(" %d",  &a[i]);
+  }
+  puts(" to see if some the digits were repeated");
+  for (i = 0; i < N; i++) {
+    key=a[i];
+    lock=i;
+    for (i = 0; i < N && i!=lock ; i++) {
+if (  key==a[i]) {
+  printf("repeated %d" ,key);
+ }
+     
+      
+    }
+
+  }
+
+
+  return 0;
+}
+
+
+#+END_SRC
+
+/* this actually worked, paint me amused */
+
+
+/* 19 */
+
+#+BEGIN_SRC C
+#include <stdio.h>
+int main( )
+{
+  char str[]="are we having fun yet";
+  printf(" %s" ,str);
+  return 0;
+}
+
+
+#+END_SRC
+/* 20 */
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+int main( )
+{
+  char str[]="are we having fun yet";
+  /* printf(" %3s" ,str); /\* this is wrong *\/ */
+    printf(" %.3s" ,str);
+  return 0;
+}
+
+
+#+END_SRC
+/* 21 */
+
+#+BEGIN_SRC C
+
+/* let us take some input string from the user */
+
+#include <stdio.h>
+int main( )
+{
+  char *user_input[20];
+  printf(" what is your name?\n");
+  scanf("%s", &user_input);
+  printf("you say that your name is %s\n\n\n" ,user_input);
+  return 0;
+}
+
+
+#+END_SRC
+/* this works */
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+int main( )
+{
+  char user_input[20];
+  printf(" what is your name?\n");
+  scanf("%s", &user_input);
+  printf("you say that your name is %s\n\n\n" ,user_input);
+  return 0;
+}
+
+/* works even without the dereference operator, so what gives */
+/* also note the use of the ampersand character, which is generally used with pointers */
+
+#+END_SRC
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+#define SENT_LEN 20
+int main( )
+{
+  char sentence[SENT_LEN +1];
+  printf("enter a sentence\n");
+  scanf(" %s",  sentence);
+  printf("you entered the following \n %s\n", sentence);
+  return 0;
+}
+
+/* are you amazed by what just happened,*/
+/* scanf stopped reading the moment you put in a white space, that is the space character */
+/* the solution is to use the gets() function instead */
+
+
+#+END_SRC
+#+BEGIN_SRC C
+
+#include <stdio.h>
+#define SENT_LEN 20
+int main( )
+{
+  char sentence[SENT_LEN +1];
+  printf("enter a sentence\n");
+  gets(" %s",  sentence);
+/* apparently gets() too can use the placeholder or field thing like printf() */
+/* not the statement above it totally wrong */
+  printf("you entered the following \n %s\n", sentence);
+  return 0;
+}
+
+/* segmentation fault */
+
+
+#+END_SRC
+
+
+#+BEGIN_SRC C
+#include <stdio.h>
+#define SENT_LEN 20
+int main( )
+{
+  char sentence[SENT_LEN +1];
+  printf("enter a sentence\n");
+  gets(sentence);
+  printf("you entered the following \n %s\n", sentence);
+  return 0;
+}
+
+
+#+END_SRC
+/* works despite the warnings */
+
+/* 22 */
+
+/* now we will use scanf() , gets() */
+#+BEGIN_SRC C
+
+#include <stdio.h>
+#define SENT_LEN 20
+int main( )
+{
+  char sentence[SENT_LEN+1];
+  printf("enter a sentence\n no spaces please\n less then 20 characters please\n");
+  scanf(" %20s", sentence);
+  printf("you entered the following\n %s" , sentence);
+  return 0;
+}
+
+/* this one is so much better */
+/* see the n+1 thing going on, when you declare it, you declare it as n+1, the +1 will be added by the
+   scanf() function itself, so you do not have to worry about adding that +1 or null character
+however you do have to worry when you are declaring it. always declare it as n+1 */
+
+/* also this was the reason , it kept warning about gets() being dangerous and that i should use fgets() */
+
+
+#+END_SRC
+/* 23 */
+
+/* the following program is written in a very bad way */
+
+#include <stdio.h>
+#define
+
+int main( )
+{
+  
+  return 0;
+}
+
+int read_line(char str[], int n){
+
+  int ch, i=0;
+  
+  while ( (ch=getchar())!='\n') {
+
+    if ( i<n) {
+      str[i++]=ch; /*note the i++ is post increment thing, so it gets incremented after assignment */
+      
+    }
+ }
+  /* maybe about here there should have been an i++ */
+  
+  str[i]='\0';
+
+  return i;
+
+}
+
+/* in the book, there has been no use of intervening brackets and it is very maddening */
+/* big red flag here, look at the type of ch.
+getchar() reads in characters, maybe of type( they do have a type right), char and then that char is then assigned to
+ch an int. does this makes sense.
+every character is an int
+maybe like you have a is represented by an int, like idk 12352143134 and so on.
+so every character or char is an int.
+read with getchar() which reads in char types and you assign it to type int. 
+at the end you return the 
+int i which is really the number of characters or length of the string read */
+
+/* what is happening in the above function anyway, it is reading stuff but character by character
+using the getchar() function
+no scanf() no gets(), just getchar() function */
+
+/* so how do you use this function
+in the main function you have to declare the 
+array[], then you have to declare the lenght of the array, so no array this is the string or sentence
+like
+char sentence[30];
+so you just declared it
+now call the reader function
+n=30;
+read_line( arr[], n); 
+it will do the reading stuff just like scanf or gets(), 
+*/
+
+/* 24 */
+#+BEGIN_SRC C
+
+#include <stdio.h>
+int main( void)
+{
+  double x= 3.5;
+  printf(" %d\n" ,square(x));
+  return 0;
+}
+
+int square(int n )
+{
+  return n*n;
+
+}
+/* gives me the result 1, which is wrong */
+
+
+#+END_SRC
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+int main( void)
+{
+  double x= 3.5;
+  printf(" %d\n" ,(int)square(x)); /*using casting */
+  return 0;
+}
+
+int square(int n )
+{
+  return n*n;
+
+}
+
+
+
+#+END_SRC
+/* idk, the problem persists */
+/* warning implicit declaration of funtion square */
+
+#+BEGIN_SRC C
+
+#include <stdio.h>
+
+int square(int n )
+{
+  return n*n;
+
+}
+
+int main( void)
+{
+  double x= 3.5;
+  printf(" %d\n" ,(int)square(x)); /*using casting */
+  return 0;
+}
+
+/*returns 9, this is working perfectly */
+
+
+#+END_SRC
+
+#+BEGIN_SRC C
+#include <stdio.h>
+
+int square(int n )
+{
+  return n*n;
+
+}
+
+int main( void)
+{
+  double x= 3.5;
+  printf(" %d\n" ,square(x)); /* not using casting */
+  return 0;
+}
+
+
+#+END_SRC
+/*it works fine, returns 9 */
+
+/*what is happening, the function is expecting int and i am giving it double types 
+should be undefined but still it works, then in the prior case i was using typing that is
+deliberately converting from double to int types
+in the later case, without casting, the compiler did the relevant conversions itself */
+
+/* what happens if the function is expecting double and i am feeding it int or even char
+what kind of error would it give me.
+in the above case, even when there was a type mismash, there was no warning */
+
+
+
+
+#+BEGIN_SRC C
+#include <stdio.h>
+
+int square(int n);
+/* here i declared the function without actually writing the function itself */
+int main( void)
+{
+  double x= 3.5;
+  printf(" %d\n" ,square(x)); /* not using casting */
+  return 0;
+}
+
+int square(int n )
+{
+  return n*n;
+
+}
+
+
+#+END_SRC
+/* it works, returns 9, no warning or errors */
+
